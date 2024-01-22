@@ -265,17 +265,26 @@ function sapXepMangTangDan () {
 }
 document.getElementById('btn7').onclick = sapXepMangTangDan;
 
+function ktSNT (n) {
+  if (n <= 1) {
+    return false;
+  }
+  for (var z = 2; z < Math.sqrt(n); z ++){
+    if (n % z == 0) {
+      return false;
+    } 
+  }
+  return true;
+}
 function timSoNguyenTo () {
   var soNT = 0;
-  var dKien = 0;
-  for (i = 1; i < arrSoN.length; i++) {
-    if (arrSoN[i] % arrSoN[i] == 0 ) {
-    soNT = arrSoN[i];
-    break;
-  } else dKien = -1;}
-  if (dKien = -1) {
-    document.getElementById('kq8').innerHTML = dKien;
-  } else document.getElementById('kq8').innerHTML = soNT;
+  for (var i = 0; i < arrSoN.length; i++) {
+    if (ktSNT(arrSoN[i])) {
+      soNT = arrSoN[i];
+      break;
+    }
+  }
+  document.getElementById('kq8').innerHTML = soNT;
 }
 document.getElementById('btn8').onclick = timSoNguyenTo;
 
@@ -287,9 +296,21 @@ function themSoNVaoMang2() {
   arrSoN2.push(soN2);
   console.log(arrSoN2);
   document.querySelector('.render_arr2').innerHTML = arrSoN2;
-}
-
+};
 document.querySelector('.btn-danger').onclick = themSoNVaoMang2;
+
+function demSoNguyenTo () {
+  var count = 0;
+  for (var i = 0; i < arrSoN2.length; i++){
+    if (ktSNT(arrSoN2[i])) {
+      count ++;
+    }
+  }
+  document.getElementById('kq9').innerHTML = count;
+}
+document.getElementById('btn9').onclick = demSoNguyenTo;
+
+
 
 function soSanhSo () {
   var demSoChan = 0;
@@ -302,8 +323,5 @@ function soSanhSo () {
   if (demSoChan < demSoLe) {
     document.getElementById('kq10').innerHTML = "Số lẻ nhiều hơn số chẵn";
   } else document.getElementById('kq10').innerHTML = "Số chẵn nhiều hơn số lẻ";
-}
+};
 document.getElementById('btn10').onclick = soSanhSo;
-// với mỗi câu hỏi, các bạn sẽ qua bên layout và tạo một nút giúp cho người dùng khi đã thêm đủ các phần tử vào mảng thì sẽ bắt đầu bấm vào các nút để trả về kết quả
-
-
