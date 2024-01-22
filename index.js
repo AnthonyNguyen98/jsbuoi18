@@ -198,7 +198,7 @@ document.getElementById('btn2').onclick = demSoDuong;
 function timSoNhoNhat() {
   // [4,7,9,11,31],var min = arrSoN[i](4)
   var min = arrSoN[0];
-  for (var i = 1; i < arrSoN.length; i++) {
+  for (var i = 0; i < arrSoN.length; i++) {
     if (arrSoN[i] < min) {
       min = arrSoN[i];
     }
@@ -211,13 +211,13 @@ document.getElementById('btn3').onclick = timSoNhoNhat;
 function timSoDuongNhoNhat() {
   // [4,7,9,11,31],var min = arrSoN[i](4)
   var minD = arrSoN[0];
-  for (var z = 1; z < arrSoN.length; z++) {
+  for (var z = 0; z < arrSoN.length; z++) {
     if (arrSoN[z] > 0) {
       minD = arrSoN[z];
       break;
     }
   }
-  for (var i = 1; i < arrSoN.length; i++) {
+  for (var i = 0; i < arrSoN.length; i++) {
     if (arrSoN[i] < minD && arrSoN[i] >= 0) {
       minD = arrSoN[i];
     }
@@ -278,6 +278,32 @@ function timSoNguyenTo () {
   } else document.getElementById('kq8').innerHTML = soNT;
 }
 document.getElementById('btn8').onclick = timSoNguyenTo;
+
+var arrSoN2 = [];
+function themSoNVaoMang2() {
+  console.log('hello');
+  // xử lí lấy dữ liệu người dùng nhập
+  var soN2 = document.getElementById('txt-soN2').value * 1;
+  arrSoN2.push(soN2);
+  console.log(arrSoN2);
+  document.querySelector('.render_arr2').innerHTML = arrSoN2;
+}
+
+document.querySelector('.btn-danger').onclick = themSoNVaoMang2;
+
+function soSanhSo () {
+  var demSoChan = 0;
+  var demSoLe = 0;
+  for (i = 0; i< arrSoN.length; i++) {
+    if (arrSoN[i] % 2 == 0) {
+      demSoChan ++;
+    } else demSoLe ++;
+  }
+  if (demSoChan < demSoLe) {
+    document.getElementById('kq10').innerHTML = "Số lẻ nhiều hơn số chẵn";
+  } else document.getElementById('kq10').innerHTML = "Số chẵn nhiều hơn số lẻ";
+}
+document.getElementById('btn10').onclick = soSanhSo;
 // với mỗi câu hỏi, các bạn sẽ qua bên layout và tạo một nút giúp cho người dùng khi đã thêm đủ các phần tử vào mảng thì sẽ bắt đầu bấm vào các nút để trả về kết quả
 
 
